@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">BookCRUD</string>
+    <string name="add">Add</string>
+    <string name="title">Title</string>
+    <string name="author">Author</string>
+    <string name="year">Year</string>
+    <string name="add_book">Add Book</string>
+    <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
+</resources>
