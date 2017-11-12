@@ -70,6 +70,8 @@ public class BookProvider extends ContentProvider {
 
         }
 
+        cursor.setNotificationUri(getContext().getContentResolver(), uri);
+
         return cursor;
     }
 
@@ -84,6 +86,7 @@ public class BookProvider extends ContentProvider {
     public Uri insert(@NonNull Uri uri, @Nullable ContentValues values) {
         helper.getWritableDatabase()
                 .insert(TABLE_NAME, null, values);
+        getContext().getContentResolver().notifyChange(uri, null);
         return null;
     }
 
@@ -91,6 +94,7 @@ public class BookProvider extends ContentProvider {
     public int delete(@NonNull Uri uri, @Nullable String selection, @Nullable String[] selectionArgs) {
         helper.getWritableDatabase()
                 .delete(TABLE_NAME, selection, selectionArgs);
+        getContext().getContentResolver().notifyChange(uri, null);
         return 0;
     }
 
@@ -98,6 +102,7 @@ public class BookProvider extends ContentProvider {
     public int update(@NonNull Uri uri, @Nullable ContentValues values, @Nullable String selection, @Nullable String[] selectionArgs) {
         helper.getWritableDatabase()
                 .update(TABLE_NAME, values, selection, selectionArgs);
+        getContext().getContentResolver().notifyChange(uri, null);
         return 0;
     }
 }
